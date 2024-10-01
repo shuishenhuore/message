@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave a message</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background: #12c2e9;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        display: flex;
+        justify-content: center;
+        font-family: kaiti,'Courier New', Courier, monospace;
+    }
+    .messages{
+        margin-top: 100px;
+        width: 50vw;
+        box-shadow: 0px 5px 10px black;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.5);
+    }
+    .messages h1{
+        margin-top: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .messages form{
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        padding: 0 50px;
+    }
+    .messages form input{
+        height: 40px;
+        margin-bottom: 20px;
+        font: 500 20px '';
+        outline: none;
+    }
+    .messages form textarea{
+        height: 100px;
+        overflow-y: scroll;
+        font: 500 20px '';
+        resize: none;
+        margin-bottom: 20px;
+        outline: none;
+    }
+    .messages form button{
+        width: 80px;
+        height: 40px;
+        margin-left: 75%;
+        border: none;
+        border-radius: 10px;
+        font: 400 20px '';
+        background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+    }
+    .messages form button:active{
+        transform: scale(0.9);
+    }
+    .content{
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 80%;
+        background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+    }
+    .content .info{
+        display: flex;
+        list-style-type: none;
+        padding: 10px 20px;
+    }
+    .content .info .username{
+        font-size: 20px;
+    }
+    .content .info img{
+        border-radius: 50%;
+    }
+    .content .info li:nth-child(2){
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+    .content .info li:last-child{
+        margin-top: 5px;
+        margin-left: 30%;
+    }
+    .content .message{
+        font-size: 25px;
+    }
+</style>
+<body>
+    <div class="messages">
+        <h1>留个言吧！</h1>
+        <form action="#">
+            <input id="username" type="text" placeholder="用户名">
+            <textarea id="enter" placeholder="请输入你的留言"></textarea>
+            <button class="button">留言</button>
+        </form>
+        
+       <div id="messageBox">
+        <div class="content">
+            <div class="info">
+                <li><img src="./head.jpg" height="70px" width="70px"></li>
+                <li><span class="username">lele</span></li>
+                <li><span>发布于:2024/9/30 22:00</span></li>
+                
+            </div>
+            <div class="message">
+                你好，这是一个可以留言的留言板！但是你的留言并不会被保存，保存功能暂时没有实现。
+            </div>
+        </div>
+       </div>
+
+    </div>
+<script>
+    document.querySelector('.button').addEventListener('click',function(){
+        let username = document.getElementById('username').value;
+        let enterContent = document.getElementById('enter').value;
+        let newContent = document.createElement('div');
+        let messageBox = document.getElementById('messageBox');
+        newContent.classList.add('content')
+        newContent.innerHTML = `
+        <div class="info">
+                <li><img src="./head.jpg" height="70px" width="70px"></li>
+                <li><span class="username">${username}</span></li>
+                <li><span>发布于:2024/9/30 22:00</span></li>
+            </div>
+            <div class="message">
+            ${enterContent}
+            </div>
+        `
+        messageBox.insertBefore(newContent,messageBox.firstChild)
+        
+        document.getElementById('username').value = '';
+        document.getElementById('enter').value = '';
+    })
+</script>
+</body>
+</html>
