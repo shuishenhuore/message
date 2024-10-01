@@ -22,7 +22,7 @@
     }
     .content .info .data{
         position: absolute;
-        top: 70px;
+        top: 10px;
         left: 50px;
     }
 }
