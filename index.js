@@ -6,13 +6,16 @@ document.querySelector('.button').addEventListener('click',function(){
     newContent.classList.add('content')
     newContent.innerHTML = `
     <div class="info">
-            <li><img src="./head.jpg" height="70px" width="70px"></li>
-            <li><span class="username">${username}</span></li>
-            <li><span>发布于:${getCurrentTime()}</span></li>
-        </div>
-        <div class="message">
-        ${enterContent}
-        </div>
+                    <div class="user-info">
+                        <div><img src="./head.jpg" height="70px" width="70px"></div>
+                        <div class="username">${username}</div>
+                    </div>
+                    <li class="data"><span>发布于:${getCurrentTime()}</span></li>
+                    
+                </div>
+                <div class="message">
+                        ${enterContent}
+                </div>
     `
     messageBox.insertBefore(newContent,messageBox.firstChild)
     
